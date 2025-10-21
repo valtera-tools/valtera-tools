@@ -64,3 +64,4 @@ docs/
 packs/
 node_modules/
 dist/
+.github/
