@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Valtera — Compound & Inflation Visualizer</title>
+    <!-- Tailwind (CDN for speed now) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
+  </head>
+  <body class="bg-zinc-950 text-zinc-100 min-h-screen">
+    <div class="max-w-5xl mx-auto px-4 py-8">
+<header class="mb-6 flex items-end justify-between">
+
+  <a href="/index.html" style="
+      text-decoration: none;
+      color: #9ae6b4;
+      font-weight: 500;
+    ">
+      ← Back to Home
+  </a>
+  
+  <div>
+    <h1 class="text-2xl sm:text-3xl font-semibold">Compound & Inflation Visualizer</h1>
+    <p class="text-zinc-400 text-sm mt-1">Simple, educational. No advice. 🇦🇺</p>
+  </div>
+
+  <nav role="tablist" aria-label="Pages" class="flex gap-2">
+    <button id="tab-dashboard" role="tab" aria-selected="true"
+      class="px-3 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 font-medium">
+      Dashboard
+    </button>
+    <button id="tab-about" role="tab" aria-selected="false"
+      class="px-3 py-2 rounded-lg bg-zinc-800 border border-zinc-700">
+      About
+    </button>
+  </nav>
+</header>
+    <section id="dashboardSection">
+      <section class="grid md:grid-cols-3 gap-4">
+        <!-- Form -->
+        <div class="md:col-span-1 bg-zinc-900/60 rounded-2xl p-4 shadow">
+          <div class="space-y-3">
+            <label class="block">
+              <span class="text-sm text-zinc-300">Initial Amount (A$)</span>
+              <input id="initial" type="number" min="0" step="100" class="mt-1 w-full rounded-lg bg-zinc-800 border border-zinc-700 px-3 py-2" value="5000">
+            </label>
+
+            <label class="block">
+              <span class="text-sm text-zinc-300">Monthly Contribution (A$)</span>
+              <input id="monthly" type="number" min="0" step="10" class="mt-1 w-full rounded-lg bg-zinc-800 border border-zinc-700 px-3 py-2" value="500">
+            </label>
+
+            <label class="block">
+              <span class="text-sm text-zinc-300">Years</span>
+              <input id="years" type="number" min="1" max="60" step="1" class="mt-1 w-full rounded-lg bg-zinc-800 border border-zinc-700 px-3 py-2" value="10">
+            </label>
+
+            <label class="block">
+              <span class="text-sm text-zinc-300">Annual Return (%)</span>
+              <input id="return" type="number" min="0" max="50" step="0.1" class="mt-1 w-full rounded-lg bg-zinc-800 border border-zinc-700 px-3 py-2" value="7">
+            </label>
+
+            <label class="block">
+              <span class="text-sm text-zinc-300">Inflation (%)</span>
+              <input id="inflation" type="number" min="0" max="20" step="0.1" class="mt-1 w-full rounded-lg bg-zinc-800 border border-zinc-700 px-3 py-2" value="3">
+            </label>
+
+            <div class="flex gap-2 pt-2">
+              <button id="calcBtn" class="flex-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 px-3 py-2 font-medium">Update</button>
+              <button id="resetBtn" class="rounded-lg bg-zinc-800 border border-zinc-700 px-3 py-2">Reset</button>
+            </div>
+          </div>
+
+          <p class="text-xs text-zinc-500 mt-4 leading-snug">
+            Disclaimer: This tool provides general information only. It doesn’t provide financial advice or execute transactions. Results are hypothetical and for education.
+          </p>
+        </div>
+
+
+        <!-- Chart + Summary -->
+        <div class="md:col-span-2 space-y-4">
+          <div class="bg-zinc-900/60 rounded-2xl p-4 shadow">
+            <canvas id="viz" height="450"></canvas>
+          </div>
+
+          <div id="summary" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <!-- cards injected by JS -->
+          </div>
+        </div>
+      </section>
+      </section>
+      
+
+      <section id="aboutSection" class="hidden">
+  <div class="bg-zinc-900/60 rounded-2xl p-5 space-y-4">
+    <h2 class="text-xl font-semibold">About this app</h2>
+    <p class="text-zinc-300">
+      This tool shows how money can grow via <span class="font-medium">compound interest</span> and how
+      <span class="font-medium">inflation</span> reduces purchasing power. It’s built for Australian users
+      and works fully offline.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="rounded-xl border border-zinc-800 p-4">
+        <h3 class="font-medium mb-1">How it works</h3>
+        <ul class="text-zinc-300 list-disc pl-5 space-y-1">
+          <li>Monthly compounding of returns.</li>
+          <li>Inflation adjustment converts nominal to “real” value.</li>
+          <li>Summary cards show contributions and outcomes.</li>
+        </ul>
+      </div>
+
+      <div class="rounded-xl border border-zinc-800 p-4">
+        <h3 class="font-medium mb-1">Formulas</h3>
+        <p class="text-zinc-300 text-sm leading-relaxed">
+          Future Value ≈ monthly compounding loop; Real Value = Nominal / (1 + i)<sup>t</sup>.
+        </p>
+      </div>
+    </div>
+
+    <div class="rounded-xl border border-zinc-800 p-4">
+      <h3 class="font-medium mb-1">Compliance</h3>
+      <p class="text-zinc-400 text-sm">
+        General information only. Not financial advice. No accounts, no trading, no personal data.
+      </p>
+    </div>
+  </div>
+</section>
+
+    </div>
+  <script type="module" src="/compound_visualiser/app.js"></script>
+  </body>
+</html>

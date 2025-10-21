@@ -1,0 +1,66 @@
+# Python virtual environments
+.cb/
+.cb-venv/
+.venv/
+venv/
+ENV/
+env/
+
+# Python caches and tooling
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Node & Vite artifacts
+node_modules/
+dist/
+.vite/
+.parcel-cache/
+.cache/
+
+# Build outputs & temp
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+*.orig
+*.lock
+*.log
+*.pid
+
+# Pack files
+packs/
+
+#docs
+docs/
+
+# Environment & secrets
+.env
+.env.*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# OS / Editor junk
+.DS_Store
+Thumbs.db
+*.iml
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+#other
+docs/
+!docs-public/
+.cb/
+.cb-venv/
+packs/
+node_modules/
+dist/

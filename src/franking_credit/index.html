@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Franking Credit Calculator — Valtera Tools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-neutral-950 text-neutral-100 min-h-screen flex flex-col items-center p-6">
+    <header class="w-full max-w-2xl mb-8">
+      <a href="/index.html" class="text-emerald-400 hover:text-emerald-300 font-medium">← Back to Home</a>
+    </header>
+
+    <main class="bg-neutral-900 border border-neutral-800 rounded-2xl p-6 md:p-8 shadow-lg max-w-md w-full">
+      <h1 class="text-2xl font-semibold mb-2 text-center">Franking Credit Calculator</h1>
+      <p class="text-sm text-neutral-400 mb-6 text-center">
+        Estimate the franking credit attached to Australian dividends and view the grossed-up income value.
+      </p>
+
+      <div class="space-y-4">
+        <label class="block">
+          <span class="text-sm text-neutral-300">Total cash dividend (A$)</span>
+          <input id="dividend" type="number" inputmode="decimal" placeholder="e.g. 1000"
+                 class="mt-1 w-full px-4 py-2 rounded-lg bg-neutral-800 border border-neutral-700 focus:border-emerald-400 focus:outline-none" />
+          <span class="text-xs text-neutral-500">The amount of cash dividend actually paid to you.</span>
+        </label>
+
+        <label class="block">
+          <span class="text-sm text-neutral-300">Franking percentage (%)</span>
+          <input id="frankingPct" type="number" inputmode="decimal" placeholder="e.g. 100"
+                 class="mt-1 w-full px-4 py-2 rounded-lg bg-neutral-800 border border-neutral-700 focus:border-emerald-400 focus:outline-none" />
+          <span class="text-xs text-neutral-500">
+            Portion of the dividend that has already had company tax paid.  
+            100 % = fully franked  |  50 % = half franked.
+          </span>
+        </label>
+
+        <label class="block">
+          <span class="text-sm text-neutral-300">Company tax rate (%)</span>
+          <input id="taxRate" type="number" inputmode="decimal" placeholder="e.g. 30"
+                 class="mt-1 w-full px-4 py-2 rounded-lg bg-neutral-800 border border-neutral-700 focus:border-emerald-400 focus:outline-none" />
+          <span class="text-xs text-neutral-500">
+            Standard is 30 % (25 % for small/base-rate entities).
+          </span>
+        </label>
+
+        <label class="block">
+          <span class="text-sm text-neutral-300">Your marginal tax rate (%)</span>
+          <input id="personalRate" type="number" inputmode="decimal" placeholder="optional"
+                 class="mt-1 w-full px-4 py-2 rounded-lg bg-neutral-800 border border-neutral-700 focus:border-emerald-400 focus:outline-none" />
+          <span class="text-xs text-neutral-500">
+            Optional — used to estimate the after-tax outcome if provided.
+          </span>
+        </label>
+
+        <button id="calc"
+                class="w-full bg-emerald-400 text-neutral-900 font-semibold py-2 rounded-lg hover:bg-emerald-300 transition">
+          Calculate
+        </button>
+      </div>
+
+      <div id="out" class="mt-6 space-y-2 hidden">
+        <p class="text-lg font-medium text-emerald-400" id="creditLine"></p>
+        <p class="text-sm text-neutral-300" id="grossLine"></p>
+        <p class="text-sm text-neutral-400" id="afterTaxLine"></p>
+      </div>
+
+      <p class="mt-6 text-xs text-neutral-500">
+        General information only (Australia). Not financial advice.
+      </p>
+    </main>
+
+    <script type="module" src="/franking_credit/app.js"></script>
+  </body>
+</html>
