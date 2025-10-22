@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Franking Credit Calculator — Valtera Tools</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <title>Franking Credit Calculator — Valtera Tools</title>
+  <link rel="stylesheet" href="/styles.css" />
   </head>
 
   <body class="bg-neutral-950 text-neutral-100 min-h-screen flex flex-col items-center p-6">
@@ -65,6 +65,13 @@
         <p class="text-sm text-neutral-300" id="grossLine"></p>
         <p class="text-sm text-neutral-400" id="afterTaxLine"></p>
       </div>
+
+      <section id="visualCard" class="card mt-6 bg-neutral-900 border border-neutral-800 rounded-2xl p-6 shadow-lg space-y-4">
+        <h2 class="text-lg font-semibold text-neutral-100">Visual — Flow of Dollars</h2>
+        <div class="h-64 md:h-72">
+          <canvas id="frankingWaterfall" aria-label="Franking credit waterfall chart"></canvas>
+        </div>
+      </section>
 
       <p class="mt-6 text-xs text-neutral-500">
         General information only (Australia). Not financial advice.

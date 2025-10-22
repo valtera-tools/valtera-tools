@@ -1,8 +1,8 @@
-// vite.config.js
-import { defineConfig } from 'vite';
-import { resolve } from 'path';
+// vite.config.js (CommonJS)
+const { defineConfig } = require('vite');
+const { resolve } = require('path');
 
-export default defineConfig({
+module.exports = defineConfig({
   root: 'src',            // we serve from /src
   appType: 'mpa',         // multi-page (multiple index.html files)
   base: '',               // make built asset paths relative
