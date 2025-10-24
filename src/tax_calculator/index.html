@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Valtera • AU Take-Home Pay (FY24-25)</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="bg-zinc-950 text-zinc-100 antialiased">
+  <header class="max-w-5xl mx-auto px-4 py-6 flex items-center justify-between">
+    <div>
+        <h1 class="text-xl md:text-2xl font-semibold">AU Take-Home Pay Calculator</h1>
+        <p class="text-sm text-zinc-400">FY 2024-25 | Educational Only</p>
+    </div>
+
+    <nav role="tablist" aria-label="Sections" class="flex gap-2">
+        <a href="/" class="px-3 py-1.5 rounded-2xl bg-zinc-800 hover:bg-zinc-700 text-sm font-medium">
+        ← Dashboard
+        </a>
+        <button id="tab-dashboard" role="tab" aria-selected="true"
+        class="px-3 py-1.5 rounded-2xl bg-zinc-800 hover:bg-zinc-700 text-sm font-medium">Dashboard</button>
+        <button id="tab-about" role="tab" aria-selected="false"
+        class="px-3 py-1.5 rounded-2xl bg-zinc-800 hover:bg-zinc-700 text-sm font-medium">About</button>
+    </nav>
+    </header>
+
+
+  <main class="max-w-5xl mx-auto px-4 pb-16">
+    <!-- DASHBOARD -->
+    <section id="dashboardSection" class="grid md:grid-cols-2 gap-6">
+      <!-- Left: Inputs -->
+      <div class="rounded-2xl p-4 bg-zinc-900/60 ring-1 ring-zinc-800">
+        <div class="space-y-3">
+          <label class="block">
+            <span class="text-sm text-zinc-300">Financial Year</span>
+            <select id="fy" class="mt-1 w-full rounded-lg bg-zinc-800 p-2">
+              <option value="2024-25" selected>FY 2024–25 (Stage 3)</option>
+            </select>
+          </label>
+          <label class="block">
+            <span class="text-sm text-zinc-300">Annual Salary (A$)</span>
+            <input id="salary" type="number" inputmode="decimal" min="0" value="90000"
+              class="mt-1 w-full rounded-lg bg-zinc-800 p-2" />
+          </label>
+          <label class="block">
+            <span class="text-sm text-zinc-300">Superannuation (Employer) %</span>
+            <input id="superPct" type="number" step="0.1" min="0" value="11.5"
+              class="mt-1 w-full rounded-lg bg-zinc-800 p-2" />
+          </label>
+          <label class="inline-flex items-center gap-2">
+            <input id="includeMedicare" type="checkbox" class="accent-zinc-300" checked />
+            <span class="text-sm text-zinc-300">Include Medicare levy (2% approx.)</span>
+          </label>
+
+          <div class="flex gap-2 pt-2">
+            <button id="btnUpdate" class="px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500">Update</button>
+            <button id="btnReset" class="px-3 py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700">Reset</button>
+          </div>
+
+          <p class="text-xs text-zinc-400 pt-2">
+            General educational information only. Not financial advice. Results are approximate, based on FY 2024–25 resident
+            rates and a flat Medicare assumption.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: Viz + Summary -->
+      <div class="rounded-2xl p-4 bg-zinc-900/60 ring-1 ring-zinc-800">
+        <canvas id="viz" class="h-80"></canvas>
+        <div id="summary" class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4 text-sm"></div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="aboutSection" class="hidden">
+      <div class="rounded-2xl p-4 bg-zinc-900/60 ring-1 ring-zinc-800 space-y-3">
+        <h2 class="text-lg font-semibold">About</h2>
+        <p class="text-zinc-300">
+          Uses Australian resident tax brackets for FY 2024–25 (Stage 3). Medicare levy is approximated at 2% of taxable income.
+          Superannuation is calculated on salary at the rate you choose (default 11.5%).
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="/tax_calculator/app.js"></script>
+</body>
+</html>

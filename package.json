@@ -10,11 +10,12 @@
     "dev": "vite",
     "tw:build": "npx @tailwindcss/cli -i ./src/styles.css -o ./src/public/styles.css --minify",
     "tw:watch": "npx @tailwindcss/cli -i ./src/styles.css -o ./src/public/styles.css --watch",
-  "build": "npm run tw:build && vite build",
+    "build": "npm run tw:build && vite build",
     "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:compound": "vite --open /compound_visualiser/index.html",
-    "dev:franking": "vite --open /franking_credit/index.html"
+    "dev:franking": "vite --open /franking_credit/index.html",
+    "dev:tax": "vite --open /tax_calculator/index.html"
   },
   "keywords": [],
   "author": "",
